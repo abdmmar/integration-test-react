@@ -18,6 +18,7 @@ import { Calendar } from "./components/ui/calendar";
 import { format } from "date-fns";
 import * as React from "react";
 import { Switch } from "./components/ui/switch";
+import { Checkbox } from "./components/ui/checkbox";
 
 function App() {
 	const [date, setDate] = React.useState<Date>();
@@ -60,7 +61,11 @@ function App() {
 								<Switch />
 							</div>
 						</div>
-						<div>
+						<div className="flex flex-col gap-4">
+							<div className="flex items-center gap-2">
+								<Checkbox id="terms" />
+								<Label htmlFor="terms">Accept terms and conditions</Label>
+							</div>
 							<Button className="w-full" size="lg">
 								Add Collection
 							</Button>
