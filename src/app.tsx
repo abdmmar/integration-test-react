@@ -19,6 +19,7 @@ import { format } from "date-fns";
 import * as React from "react";
 import { Switch } from "./components/ui/switch";
 import { Checkbox } from "./components/ui/checkbox";
+import { RadioGroup, RadioGroupItem } from "./components/ui/radio-group";
 
 function App() {
 	const [date, setDate] = React.useState<Date>();
@@ -26,51 +27,7 @@ function App() {
 	return (
 		<div className="m-8 grid place-items-center">
 			<div className="flex p-4 rounded-lg border border-slate-200 shadow-md max-w-[900px]">
-				<div className="grid grid-cols-[30%_1fr] gap-6 w-full">
-					<div className="flex flex-col justify-between">
-						<div className="flex gap-4 flex-col">
-							<div className="flex gap-2 flex-col">
-								<Label>Photo</Label>
-								<div className="w-full h-[250px] bg-slate-200 rounded-md" />
-								<Input type="file" placeholder="Select photo" />
-							</div>
-							<hr />
-							<div>
-								<Label>Creation Date</Label>
-								<Popover>
-									<PopoverTrigger asChild>
-										<Button
-											variant={"outline"}
-											className={cn(
-												"w-full justify-start text-left font-normal",
-												!date && "text-muted-foreground",
-											)}
-										>
-											<CalendarIcon className="mr-2 h-4 w-4" />
-											{date ? format(date, "PPP") : <span>Pick a date</span>}
-										</Button>
-									</PopoverTrigger>
-									<PopoverContent className="w-auto p-0">
-										<Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
-									</PopoverContent>
-								</Popover>
-							</div>
-							<hr />
-							<div className="flex items-center justify-between gap-2">
-								<Label>Private Collection</Label>
-								<Switch />
-							</div>
-						</div>
-						<div className="flex flex-col gap-4">
-							<div className="flex items-center gap-2">
-								<Checkbox id="terms" />
-								<Label htmlFor="terms">Accept terms and conditions</Label>
-							</div>
-							<Button className="w-full" size="lg">
-								Add Collection
-							</Button>
-						</div>
-					</div>
+				<div className="grid grid-cols-[1fr_30%] gap-6 w-full">
 					<div className="flex flex-col gap-4">
 						<div>
 							<Label>Title</Label>
@@ -177,6 +134,70 @@ function App() {
 									</button>
 								</Badge>
 							</div>
+						</div>
+						<div className="flex flex-col gap-2">
+							<Label>Type</Label>
+							<RadioGroup
+								defaultValue="digital"
+								className="p-2 rounded-md bg-slate-100 grid grid-cols-2 gap-2"
+							>
+								<Label className=" [&:has([data-state=checked])>div]:bg-white">
+									<RadioGroupItem value="digital" className="sr-only" />
+									<div className="rounded-sm p-3 text-center ring-offset-black outline-none focus:ring-1 focus:ring-ring focus:ring-offset-1">
+										Digital
+									</div>
+								</Label>
+								<Label className="[&:has([data-state=checked])>div]:bg-white">
+									<RadioGroupItem value="physical" className="sr-only" />
+									<div className="rounded-sm p-3 text-center ring-offset-black outline-none focus:ring-1 focus:ring-ring focus:ring-offset-1">
+										Physical
+									</div>
+								</Label>
+							</RadioGroup>
+						</div>
+					</div>
+					<div className="flex flex-col justify-between">
+						<div className="flex gap-4 flex-col">
+							<div className="flex gap-2 flex-col">
+								<Label>Photo</Label>
+								<div className="w-full h-[250px] bg-slate-200 rounded-md" />
+								<Input type="file" placeholder="Select photo" />
+							</div>
+							<hr />
+							<div>
+								<Label>Creation Date</Label>
+								<Popover>
+									<PopoverTrigger asChild>
+										<Button
+											variant={"outline"}
+											className={cn(
+												"w-full justify-start text-left font-normal",
+												!date && "text-muted-foreground",
+											)}
+										>
+											<CalendarIcon className="mr-2 h-4 w-4" />
+											{date ? format(date, "PPP") : <span>Pick a date</span>}
+										</Button>
+									</PopoverTrigger>
+									<PopoverContent className="w-auto p-0">
+										<Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
+									</PopoverContent>
+								</Popover>
+							</div>
+							<hr />
+							<div className="flex items-center justify-between gap-2">
+								<Label>Private Collection</Label>
+								<Switch />
+							</div>
+						</div>
+						<div className="flex flex-col gap-4">
+							<div className="flex items-center gap-2">
+								<Checkbox id="terms" />
+								<Label htmlFor="terms">Accept terms and conditions</Label>
+							</div>
+							<Button className="w-full" size="lg">
+								Add Collection
+							</Button>
 						</div>
 					</div>
 				</div>
