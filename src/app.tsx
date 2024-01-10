@@ -1,4 +1,4 @@
-import { CalendarIcon, Cross2Icon, Pencil1Icon, PlusIcon } from "@radix-ui/react-icons";
+import { Cross2Icon } from "@radix-ui/react-icons";
 import "./app.css";
 import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
@@ -11,27 +11,19 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "./components/ui/select";
-import { Badge } from "./components/ui/badge";
-import { Popover, PopoverContent, PopoverTrigger } from "./components/ui/popover";
-import { cn } from "./lib/utils";
-import { Calendar } from "./components/ui/calendar";
-import { format } from "date-fns";
 import * as React from "react";
 import { Switch } from "./components/ui/switch";
 import { Checkbox } from "./components/ui/checkbox";
 import { RadioGroup, RadioGroupItem } from "./components/ui/radio-group";
 
 function App() {
-	const [date, setDate] = React.useState<Date>();
-
 	const onSubmitCollection = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+
 		const form = new FormData(e.currentTarget);
 		for (const [key, value] of form.entries()) {
 			console.log(key, value);
 		}
-		console.log("🚀 ~ onSubmitCollection ~ form:", form);
-		console.log("🚀 ~ onSubmitCollection ~ form:", form.get("type"));
 	};
 
 	return (
@@ -151,7 +143,7 @@ function App() {
 
 							<div className="flex items-center justify-between gap-2">
 								<Label htmlFor="isPrivate">Private Collection</Label>
-								<Switch name="isPrivate" />
+								<Switch id="isPrivate" name="isPrivate" />
 							</div>
 						</div>
 						<div className="flex flex-col gap-4">
