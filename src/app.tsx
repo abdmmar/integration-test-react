@@ -43,26 +43,26 @@ function App() {
 				<div className="grid grid-cols-[1fr_30%] gap-6 w-full">
 					<div className="flex flex-col gap-4">
 						<div>
-							<Label>Title</Label>
-							<Input placeholder="Add title" />
+							<Label htmlFor="title">Title</Label>
+							<Input id="title" name="title" placeholder="Add title" />
 						</div>
 						<div>
-							<Label>Description</Label>
-							<Textarea placeholder="Add description" />
+							<Label htmlFor="description">Description</Label>
+							<Textarea id="description" name="description" placeholder="Add description" />
 						</div>
 						<div>
-							<Label>Artist</Label>
-							<Input placeholder="Add artist" />
+							<Label htmlFor="artist">Artist</Label>
+							<Input id="artist" name="artist" placeholder="Add artist" />
 						</div>
 						<div>
-							<Label>Medium</Label>
-							<Input placeholder="Add medium" />
+							<Label htmlFor="creationDate">Creation Date</Label>
+							<Input type="date" placeholder="Pick a date" />
 						</div>
 						<div className="grid grid-cols-2 gap-4">
 							<div>
-								<Label>Classification</Label>
-								<Select>
-									<SelectTrigger>
+								<Label htmlFor="classification">Classification</Label>
+								<Select name="classification">
+									<SelectTrigger id="classification">
 										<SelectValue placeholder="Classification" />
 									</SelectTrigger>
 									<SelectContent>
@@ -73,9 +73,9 @@ function App() {
 								</Select>
 							</div>
 							<div>
-								<Label>Medium</Label>
-								<Select>
-									<SelectTrigger>
+								<Label htmlFor="medium">Medium</Label>
+								<Select name="medium">
+									<SelectTrigger id="medium">
 										<SelectValue placeholder="Medium" />
 									</SelectTrigger>
 									<SelectContent>
@@ -87,20 +87,38 @@ function App() {
 							</div>
 						</div>
 						<div>
-							<Label>Size</Label>
+							<Label htmlFor="sizeWidth">Size</Label>
 							<div className="flex gap-2 items-center">
-								<Input type="number" inputMode="numeric" placeholder="Width" />
+								<Input
+									id="sizeWidth"
+									name="sizeWidth"
+									type="number"
+									inputMode="numeric"
+									placeholder="Width"
+								/>
 								<Cross2Icon className="min-w-3 min-h-3 text-slate-600" />
-								<Input type="number" inputMode="numeric" placeholder="Height" />
+								<Input
+									id="sizeWidth"
+									name="sizeHeight"
+									type="number"
+									inputMode="numeric"
+									placeholder="Height"
+								/>
 								<Cross2Icon className="min-w-3 min-h-3 text-slate-600" />
-								<Input type="number" inputMode="numeric" placeholder="Dimension" />
+								<Input
+									id="sizeDimension"
+									name="sizeDimension"
+									type="number"
+									inputMode="numeric"
+									placeholder="Dimension"
+								/>
 							</div>
 						</div>
 
 						<div className="flex flex-col gap-2">
-							<Label>Type</Label>
+							<Label htmlFor="type">Type</Label>
 							<RadioGroup
-								id="name"
+								id="type"
 								name="type"
 								defaultValue="digital"
 								className="p-2 rounded-md bg-slate-100 grid grid-cols-2 gap-2"
@@ -125,41 +143,20 @@ function App() {
 							<div className="flex gap-2 flex-col">
 								<Label htmlFor="photo" className="flex flex-col gap-2">
 									<span>Photo</span>
-
 									<div className="w-full h-[250px] bg-slate-200 rounded-md" />
 								</Label>
 								<Input id="photo" name="photo" type="file" placeholder="Select photo" />
 							</div>
 							<hr />
-							<div>
-								<Label>Creation Date</Label>
-								<Popover>
-									<PopoverTrigger asChild>
-										<Button
-											variant={"outline"}
-											className={cn(
-												"w-full justify-start text-left font-normal",
-												!date && "text-muted-foreground",
-											)}
-										>
-											<CalendarIcon className="mr-2 h-4 w-4" />
-											{date ? format(date, "PPP") : <span>Pick a date</span>}
-										</Button>
-									</PopoverTrigger>
-									<PopoverContent className="w-auto p-0">
-										<Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
-									</PopoverContent>
-								</Popover>
-							</div>
-							<hr />
+
 							<div className="flex items-center justify-between gap-2">
-								<Label>Private Collection</Label>
-								<Switch />
+								<Label htmlFor="isPrivate">Private Collection</Label>
+								<Switch name="isPrivate" />
 							</div>
 						</div>
 						<div className="flex flex-col gap-4">
 							<div className="flex items-center gap-2">
-								<Checkbox id="terms" />
+								<Checkbox id="terms" name="terms" />
 								<Label htmlFor="terms">Accept terms and conditions</Label>
 							</div>
 							<Button className="w-full" size="lg" type="submit">
