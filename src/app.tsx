@@ -1,4 +1,5 @@
 import { Cross2Icon } from "@radix-ui/react-icons";
+import { format } from "date-fns";
 import "./app.css";
 import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
@@ -36,24 +37,34 @@ function App() {
 					<div className="flex flex-col gap-4">
 						<div>
 							<Label htmlFor="title">Title</Label>
-							<Input id="title" name="title" placeholder="Add title" />
+							<Input id="title" name="title" placeholder="Add title" required />
 						</div>
 						<div>
 							<Label htmlFor="description">Description</Label>
-							<Textarea id="description" name="description" placeholder="Add description" />
+							<Textarea
+								id="description"
+								name="description"
+								placeholder="Add description"
+								required
+							/>
 						</div>
 						<div>
 							<Label htmlFor="artist">Artist</Label>
-							<Input id="artist" name="artist" placeholder="Add artist" />
+							<Input id="artist" name="artist" placeholder="Add artist" required />
 						</div>
 						<div>
 							<Label htmlFor="creationDate">Creation Date</Label>
-							<Input type="date" placeholder="Pick a date" />
+							<Input
+								type="date"
+								placeholder="Pick a date"
+								max={format(new Date(), "yyyy-MM-dd")}
+								required
+							/>
 						</div>
 						<div className="grid grid-cols-2 gap-4">
 							<div>
 								<Label htmlFor="classification">Classification</Label>
-								<Select name="classification">
+								<Select name="classification" required>
 									<SelectTrigger id="classification">
 										<SelectValue placeholder="Classification" />
 									</SelectTrigger>
@@ -66,7 +77,7 @@ function App() {
 							</div>
 							<div>
 								<Label htmlFor="medium">Medium</Label>
-								<Select name="medium">
+								<Select name="medium" required>
 									<SelectTrigger id="medium">
 										<SelectValue placeholder="Medium" />
 									</SelectTrigger>
@@ -79,7 +90,7 @@ function App() {
 							</div>
 						</div>
 						<div>
-							<Label htmlFor="sizeWidth">Size</Label>
+							<Label htmlFor="sizeWidth">Size (cm)</Label>
 							<div className="flex gap-2 items-center">
 								<Input
 									id="sizeWidth"
@@ -87,6 +98,7 @@ function App() {
 									type="number"
 									inputMode="numeric"
 									placeholder="Width"
+									required
 								/>
 								<Cross2Icon className="min-w-3 min-h-3 text-slate-600" />
 								<Input
@@ -95,6 +107,7 @@ function App() {
 									type="number"
 									inputMode="numeric"
 									placeholder="Height"
+									required
 								/>
 								<Cross2Icon className="min-w-3 min-h-3 text-slate-600" />
 								<Input
@@ -137,7 +150,7 @@ function App() {
 									<span>Photo</span>
 									<div className="w-full h-[250px] bg-slate-200 rounded-md" />
 								</Label>
-								<Input id="photo" name="photo" type="file" placeholder="Select photo" />
+								<Input id="photo" name="photo" type="file" placeholder="Select photo" required />
 							</div>
 							<hr />
 
@@ -148,7 +161,7 @@ function App() {
 						</div>
 						<div className="flex flex-col gap-4">
 							<div className="flex items-center gap-2">
-								<Checkbox id="terms" name="terms" />
+								<Checkbox id="terms" name="terms" required />
 								<Label htmlFor="terms">Accept terms and conditions</Label>
 							</div>
 							<Button className="w-full" size="lg" type="submit">
