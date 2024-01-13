@@ -55,6 +55,8 @@ function App() {
 						<div>
 							<Label htmlFor="creationDate">Creation Date</Label>
 							<Input
+								id="creationDate"
+								name="creationDate"
 								type="date"
 								placeholder="Pick a date"
 								max={format(new Date(), "yyyy-MM-dd")}
@@ -91,6 +93,12 @@ function App() {
 						</div>
 						<div>
 							<Label htmlFor="sizeWidth">Size (cm)</Label>
+							<Label htmlFor="sizeHeight" className="sr-only">
+								Height
+							</Label>
+							<Label htmlFor="sizeDimension" className="sr-only">
+								Dimension
+							</Label>
 							<div className="flex gap-2 items-center">
 								<Input
 									id="sizeWidth"
@@ -102,7 +110,7 @@ function App() {
 								/>
 								<Cross2Icon className="min-w-3 min-h-3 text-slate-600" />
 								<Input
-									id="sizeWidth"
+									id="sizeHeight"
 									name="sizeHeight"
 									type="number"
 									inputMode="numeric"
@@ -125,6 +133,7 @@ function App() {
 							<RadioGroup
 								id="type"
 								name="type"
+								aria-label="type"
 								defaultValue="digital"
 								className="p-2 rounded-md bg-slate-100 grid grid-cols-2 gap-2"
 							>
