@@ -82,17 +82,17 @@ describe("CollectionForm", () => {
 		expect(formElements.isPrivateInput).toBeChecked();
 		expect(formElements.termsInput).toBeChecked();
 
-		expect(formElements.titleInput).not.toBeInvalid();
-		expect(formElements.descriptionInput).not.toBeInvalid();
-		expect(formElements.artistInput).not.toBeInvalid();
-		expect(formElements.creationDateInput).not.toBeInvalid();
-		expect(formElements.classificationInput).not.toBeInvalid();
-		expect(formElements.mediumInput).not.toBeInvalid();
-		expect(formElements.sizeWidthInput).not.toBeInvalid();
-		expect(formElements.sizeHeightInput).not.toBeInvalid();
-		expect(formElements.photoInput).not.toBeInvalid();
-		expect(formElements.isPrivateInput).not.toBeInvalid();
-		expect(formElements.termsInput).not.toBeInvalid();
+		expect(formElements.titleInput).toBeValid();
+		expect(formElements.descriptionInput).toBeValid();
+		expect(formElements.artistInput).toBeValid();
+		expect(formElements.creationDateInput).toBeValid();
+		expect(formElements.classificationInput).toBeValid();
+		expect(formElements.mediumInput).toBeValid();
+		expect(formElements.sizeWidthInput).toBeValid();
+		expect(formElements.sizeHeightInput).toBeValid();
+		expect(formElements.photoInput).toBeValid();
+		expect(formElements.isPrivateInput).toBeValid();
+		expect(formElements.termsInput).toBeValid();
 
 		expect(onSubmitMockFn).toBeCalledTimes(1);
 	});
