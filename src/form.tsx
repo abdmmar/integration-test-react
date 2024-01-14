@@ -5,13 +5,6 @@ import { Button } from "./components/ui/button";
 import { Input } from "./components/ui/input";
 import { Label } from "./components/ui/label";
 import { Textarea } from "./components/ui/textarea";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "./components/ui/select";
 import * as React from "react";
 import { Switch } from "./components/ui/switch";
 import { Checkbox } from "./components/ui/checkbox";
@@ -66,29 +59,27 @@ function CollectionForm({ onSubmit }: CollectionFormProps) {
 					<div className="grid grid-cols-2 gap-4">
 						<div>
 							<Label htmlFor="classification">Classification</Label>
-							<Select name="classification">
-								<SelectTrigger id="classification">
-									<SelectValue placeholder="Classification" />
-								</SelectTrigger>
-								<SelectContent>
-									<SelectItem value="painting">Painting</SelectItem>
-									<SelectItem value="sculpture">Sculpture</SelectItem>
-									<SelectItem value="other">Other</SelectItem>
-								</SelectContent>
-							</Select>
+							<select
+								name="classification"
+								id="classification"
+								className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors"
+							>
+								<option value="painting">Painting</option>
+								<option value="sculpture">Sculpture</option>
+								<option value="other">Other</option>
+							</select>
 						</div>
 						<div>
 							<Label htmlFor="medium">Medium</Label>
-							<Select name="medium">
-								<SelectTrigger id="medium">
-									<SelectValue placeholder="Medium" />
-								</SelectTrigger>
-								<SelectContent>
-									<SelectItem value="oil-on-canvas">Oil on Canvas</SelectItem>
-									<SelectItem value="acrylic">Acrylic</SelectItem>
-									<SelectItem value="other">Other</SelectItem>
-								</SelectContent>
-							</Select>
+							<select
+								name="medium"
+								id="medium"
+								className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors"
+							>
+								<option value="oil-on-canvas">Oil on Canvas</option>
+								<option value="acrylic">Acrylic</option>
+								<option value="other">Other</option>
+							</select>
 						</div>
 					</div>
 					<div>
@@ -165,7 +156,6 @@ function CollectionForm({ onSubmit }: CollectionFormProps) {
 								type="file"
 								placeholder="Select photo"
 								accept="image/*"
-								required
 							/>
 						</div>
 						<hr />
@@ -180,7 +170,7 @@ function CollectionForm({ onSubmit }: CollectionFormProps) {
 							<Checkbox id="terms" name="terms" required />
 							<Label htmlFor="terms">Accept terms and conditions</Label>
 						</div>
-						<Button className="w-full" size="lg">
+						<Button className="w-full" size="lg" type="submit">
 							Add Collection
 						</Button>
 					</div>

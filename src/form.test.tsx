@@ -28,7 +28,7 @@ describe("CollectionForm", () => {
 	});
 
 	it("should successfully submit on valid input", async () => {
-		const onSubmitMockFn = vi.fn((data) => console.log(data));
+		const onSubmitMockFn = vi.fn();
 		const user = userEvent.setup();
 		render(<CollectionForm onSubmit={onSubmitMockFn} />);
 		const formElements = {
@@ -53,13 +53,8 @@ describe("CollectionForm", () => {
 		await user.type(formElements.descriptionInput, collection.description);
 		await user.type(formElements.artistInput, collection.artist);
 		await user.type(formElements.creationDateInput, collection.creationDate);
-
-		await user.click(formElements.classificationInput);
-		await user.click(screen.getByRole("option", { name: collection.classification }));
-
-		await user.click(formElements.mediumInput);
-		await user.click(screen.getByRole("option", { name: collection.medium }));
-
+		await user.selectOptions(formElements.classificationInput, collection.classification);
+		await user.selectOptions(formElements.mediumInput, collection.medium);
 		await user.type(formElements.sizeWidthInput, collection.size.width.toString());
 		await user.type(formElements.sizeHeightInput, collection.size.height.toString());
 		await user.click(formElements.physicalTypeInput);
