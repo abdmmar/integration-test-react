@@ -23,10 +23,6 @@ const collection = {
 };
 
 describe("CollectionForm", () => {
-	afterEach(() => {
-		cleanup();
-	});
-
 	it("should successfully submit on valid input", async () => {
 		const onSubmitMockFn = vi.fn();
 		const user = userEvent.setup();
